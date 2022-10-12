@@ -1,0 +1,21 @@
+{
+    "name": "sendee/sendee-php",
+    "description": "a php library for the Sendee API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sendee\\SendeePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dan Rovito",
+            "email": "dan@gosendee.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
