@@ -11,26 +11,21 @@ class SendeeClient
 
     function __construct($apiKey)
     {
-        $this->apiKey = $apiKey;
-        $this->baseUrl = 'https://gosendee.com/api/';
+        $this->apiKey = $apiKey;        
     }
 
-    public function sendMessage()
+    public function sendMessage($to, $infoArray)
     {
-        $url = $this->baseUrl . 'sms/send';
-
-        $sendMessage = new SendMessage();
-        $response = $sendMessage->SendSingle();
+        $sendMessage = new SendMessage($this->apiKey);
+        $response = $sendMessage->SendSingle($to, $infoArray);
 
         return $response;
     }
 
     public function sendBulkMessage()
     {
-        $url = $this->baseUrl . 'sms/bulk/send';
-
         $sendMessage = new SendMessage();
-        $response = $sendMessage->SendBulk();
+        $response = $sendMessage->SendBulk($this->apiKey);
 
         return $response;
     }
