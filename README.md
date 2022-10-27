@@ -22,9 +22,9 @@ $apiKey = "1|ZXXXXXX";
 
 $client = new Sendee\SendeePhp\SendeeClient($apiKey);
 $message =  $client->sendMessage(
-  '+15134939410', // Text this Number
+  '+15555559410', // Text this Number
   [
-    'from' => '+17479998108', // From a valid Twilio number
+    'from' => '+15555558108', // From a valid Twilio number
     'body' => 'Queue me up with Sendee'
   ]
 );
@@ -42,10 +42,10 @@ $apiKey = "1|ZXXXXXX";
 
 $client = new Sendee\SendeePhp\SendeeClient($apiKey);
 $message =  $client->sendBulkMessage(
-  '+17479998108', // From a valid Twilio Number
+  '+15555558108', // From a valid Twilio Number
   [
     'to' => [ // Text this array of numbers
-        '+15134939410','+15134939410','+15134939410',
+        '+15555559410','+15555559411','+15555559412',
     ],
     'body' => 'this is an api test bulk'
    ]
