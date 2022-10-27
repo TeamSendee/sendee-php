@@ -35,7 +35,7 @@ print $message;
 
 #### Send a Bulk SMS
 
-```
+```php
 // Send a multiple SMS with the same body using Sendee's REST API and PHP
 <?php
 $apiKey = "1|ZXXXXXX";
