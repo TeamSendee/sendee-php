@@ -1,7 +1,8 @@
 <?php
 
-namespace SendeePhp\Services;
+namespace Sendee\SendeePhp\Services;
 
+use Exception;
 use GuzzleHttp\Client;
 
 class SendMessage
@@ -10,30 +11,74 @@ class SendMessage
 
     function __construct($apiKey)
     {
-        $this->baseUrl = 'https://gosendee.com/api';
+        $this->baseUrl = 'https://gosendee.com/api/';
         $this->apiKey = $apiKey;
     }
 
     public function sendSingle($to, $infoArray)
     {
-        $client = new Client([
-            'base_uri' => $this->baseUrl,
-            'timeout'  => 2.0,
-        ]);
+        try {
+            $client = new Client([
+                'base_uri' => $this->baseUrl,
+                'timeout'  => 2.0,
+            ]);
+            
+            $response = $client->request('POST', 'sms/send', [
+                'headers'=> ['Authorization' => 'Bearer '.$this->apiKey],
+                'json'    => [
+                    'from' => $infoArray['from'],
+                    'to' => $to,
+                    'body' => $infoArray['body']
+                ],
+            ]);
+    
+            $code = $response->getStatusCode();
+            
+            $body = $response->getBody();
+    
+            return $body->getContents();
 
-        $response = $client->request('POST', '/sms/send', [
-            'headers'=> ['Authorization' => 'Bearer '.$this->apiKey],
-            'json'    => [
-                'from' => $infoArray['from'],
-                'to' => $to,
-                'body' => $infoArray['body']
-            ],
-        ]);
+        } catch (Exception $e) {
+            $error = [
+                'success' => 'false',
+                'message' => 'An error has occured.' 
+            ];
+            return json_encode($error);
+        }
+        
 
     }
 
-    public function sendBulk($apiKey)
+    public function sendBulk($from, $infoArray)
     {
-        $url = $this->baseUrl . 'sms/bulk/send';
+        //dd($infoArray);
+        try {
+            $client = new Client([
+                'base_uri' => $this->baseUrl,
+                'timeout'  => 2.0,
+            ]);
+            
+            $response = $client->request('POST', 'sms/bulk/send', [
+                'headers'=> ['Authorization' => 'Bearer '.$this->apiKey],
+                'json'    => [
+                    'from' => $from,
+                    'to' => $infoArray['to'],
+                    'body' => $infoArray['body']
+                ],
+            ]);
+    
+            $code = $response->getStatusCode();
+            
+            $body = $response->getBody();
+    
+            return $body->getContents();
+
+        } catch (Exception $e) {
+            $error = [
+                'success' => 'false',
+                'message' => 'An error has occured.' 
+            ];
+            return json_encode($error);
+        }
     }
 }

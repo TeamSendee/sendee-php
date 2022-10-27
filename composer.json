@@ -2,7 +2,13 @@
     "name": "sendee/sendee-php",
     "description": "a php library for the Sendee API",
     "type": "library",
+	"keywords": ["twilio", "sms", "api", "sendee"],
+	"homepage": "https://github.com/TeamSendee/sendee-php",
     "license": "MIT",
+	"require": {
+		"php": ">=7.1.0",
+        "guzzlehttp/guzzle": "^6.3 || ^7.0"
+    },
     "autoload": {
         "psr-4": {
             "Sendee\\SendeePhp\\": "src/"
@@ -10,12 +16,9 @@
     },
     "authors": [
         {
-            "name": "Dan Rovito",
-            "email": "dan@gosendee.com"
+            "name": "Sendee Team",
+            "email": "support@gosendee.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "guzzlehttp/guzzle": "^7.0"
-    }
+    "minimum-stability": "dev"    
 }
