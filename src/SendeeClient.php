@@ -1,8 +1,8 @@
 <?php
 
-namespace SendeePhp;
+namespace Sendee\SendeePhp;
 
-use SendeePhp\Services;
+use Sendee\SendeePhp\Services\SendMessage;
 
 class SendeeClient
 {
@@ -22,10 +22,10 @@ class SendeeClient
         return $response;
     }
 
-    public function sendBulkMessage()
+    public function sendBulkMessage($from, $infoArray)
     {
-        $sendMessage = new SendMessage();
-        $response = $sendMessage->SendBulk($this->apiKey);
+        $sendMessage = new SendMessage($this->apiKey);
+        $response = $sendMessage->SendBulk($from, $infoArray);
 
         return $response;
     }
