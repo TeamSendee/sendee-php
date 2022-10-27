@@ -56,6 +56,6 @@ print $message;
 
 ## Getting Help
 
-If you need help installing or using the library, [file a support ticket](https://gosendee.com/support).
+If you need help installing or using the library, [file a support ticket](https://gosendee.com/contact).
 
 If you've found a bug in the library or would like new features added open issues or pull requests against this repo!
